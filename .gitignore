@@ -1,4 +1,6 @@
 .old
+*.local
+local.nix
 
 result
 result-*

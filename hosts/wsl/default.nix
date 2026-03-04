@@ -1,25 +1,16 @@
-# WSL NixOS host configuration
-{ config, pkgs, ... }:
+# WSL host
+{ config, pkgs, profile, ... }:
 
 {
   imports = [
-    ../../modules/common.nix
+    ../../modules/system/common.nix
+    ../../modules/system/users.nix
+    ../../modules/system/wsl.nix
   ];
 
   networking.hostName = "nixos";
 
-  # WSL settings
-  wsl = {
-    enable        = true;
-    defaultUser   = "tfreret";
-    startMenuLaunchers = false;
-  };
-
-  # WSL does not use a bootloader or sound server
-  # Add any WSL-specific packages below
-  environment.systemPackages = with pkgs; [
-    wslu  # WSL utilities (wslview, wslpath, etc.)
-  ];
+  home-manager.users.tfreret = import ../../home/profiles/${profile}.nix;
 
   system.stateVersion = "25.11";
 }
