@@ -1,0 +1,10 @@
+.old
+
+result
+result-*
+
+.vscode/
+*.swp
+*.swo
+
+.DS_Store
