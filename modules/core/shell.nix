@@ -8,12 +8,16 @@
     shellAliases = {
       ll  = "ls -lah";
       la  = "ls -A";
+
       ".." = "cd ..";
       "..." = "cd ../..";
+
       gs  = "git status -sb";
       gd  = "git diff";
       gp  = "git push";
       gl  = "git pull";
+
+      
     };
 
     initExtra = ''

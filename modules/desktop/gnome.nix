@@ -14,9 +14,7 @@
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.appindicator
     gnomeExtensions.tailscale-qs
-    gnome-extension-manager
   ];
 
   environment.gnome.excludePackages = with pkgs; [

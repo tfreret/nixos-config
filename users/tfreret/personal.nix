@@ -3,8 +3,8 @@
 
 {
   imports = [
-    ../../modules/home/git.nix
-    ../../modules/home/shell.nix
+    ../../modules/dev/git.nix
+    ../../modules/core/shell.nix
   ];
 
   home.stateVersion = "25.11";

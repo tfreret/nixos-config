@@ -5,10 +5,14 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system/common.nix
-    ../../modules/system/users.nix
-    ../../modules/system/gnome.nix
+    ../../modules/core/common.nix
+
+    ../../modules/core/users.nix
+    ../../modules/desktop/gnome.nix
     ../../modules/gaming/games.nix
+    
+    ../../modules/services/tailscale.nix
+    ../../modules/apps/productivity.nix
   ];
 
   networking = {
@@ -45,7 +49,7 @@
     gimp
   ];
 
-  home-manager.users.tfreret = import ../../home/profiles/${profile}.nix;
+  home-manager.users.tfreret = import ../../users/tfreret/${profile}.nix;
 
   system.stateVersion = "25.11";
 }

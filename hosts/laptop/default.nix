@@ -5,9 +5,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system/common.nix
-    ../../modules/system/users.nix
-    ../../modules/system/gnome.nix
+    ../../modules/core/common.nix
+    ../../modules/core/users.nix
+    ../../modules/desktop/gnome.nix
   ];
 
   networking = {
@@ -28,7 +28,7 @@
     pulse.enable      = true;
   };
 
-  home-manager.users.tfreret = import ../../home/profiles/${profile}.nix;
+  home-manager.users.tfreret = import ../../users/tfreret/${profile}.nix;
 
   system.stateVersion = "25.11";
 }

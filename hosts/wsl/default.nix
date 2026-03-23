@@ -3,14 +3,14 @@
 
 {
   imports = [
-    ../../modules/system/common.nix
-    ../../modules/system/users.nix
-    ../../modules/system/wsl.nix
+    ../../modules/core/common.nix
+    ../../modules/core/users.nix
+    ../../modules/core/wsl.nix
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "dev-vm";
 
-  home-manager.users.tfreret = import ../../home/profiles/${profile}.nix;
+  home-manager.users.tfreret = import ../../users/tfreret/${profile}.nix;
 
   system.stateVersion = "25.11";
 }

@@ -1,5 +1,5 @@
 # System-level configuration shared across every host
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nix.settings = {
@@ -49,6 +49,10 @@
 
     pciutils
     usbutils
+
+    firefox
+    vscode
+    inputs.zen-browser.packages."${pkgs.system}".default
   ];
 
   security.sudo.wheelNeedsPassword = false;
