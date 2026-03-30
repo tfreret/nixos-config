@@ -1,13 +1,14 @@
-# Laptop host
+# Laptop host — all-in-one personal configuration
 # Run `nixos-generate-config` to generate hardware-configuration.nix
-{ config, pkgs, profile, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/core/common.nix
-    ../../modules/core/users.nix
-    ../../modules/desktop/gnome.nix
+    ../../modules/system/base.nix
+    ../../modules/system/users.nix
+    ../../modules/system/applications/gui
+    ../../modules/system/services/tailscale.nix
   ];
 
   networking = {
@@ -28,7 +29,12 @@
     pulse.enable      = true;
   };
 
-  home-manager.users.tfreret = import ../../users/tfreret/${profile}.nix;
+  environment.systemPackages = with pkgs; [
+    pciutils
+    usbutils
+  ];
+
+  home-manager.users.tfreret = import ../../users/tfreret/personal.nix;
 
   system.stateVersion = "25.11";
 }

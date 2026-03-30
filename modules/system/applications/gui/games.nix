@@ -3,15 +3,15 @@
 
 {
   programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
+    enable                              = true;
+    remotePlay.openFirewall             = true;
+    dedicatedServer.openFirewall        = true;
     localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
+    gamescopeSession.enable             = true;
   };
 
   hardware.graphics = {
-    enable = true;
+    enable      = true;
     enable32Bit = true;
   };
 

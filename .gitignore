@@ -1,6 +1,6 @@
-.old
-*.local
 local.nix
+local.nix.example
+hosts/*/local-config.nix
 
 result
 result-*

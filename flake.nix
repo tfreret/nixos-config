@@ -25,20 +25,15 @@
   let
     system = "x86_64-linux";
 
-    # local.nix is gitignored — contains private values (emails, key paths, gpg ids)
-    # Copy local.nix.example to local.nix and fill in your values.
-    local = if builtins.pathExists ./local.nix then import ./local.nix else {};
-
-    mkHost = { host, profile ? "personal", extraModules ? [] }:
+    mkHost = { host, extraModules ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit profile local inputs; };
+        specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs     = true;
-            home-manager.useUserPackages   = true;
-            home-manager.extraSpecialArgs  = { inherit local; };
+            home-manager.useGlobalPkgs    = true;
+            home-manager.useUserPackages  = true;
           }
           ./hosts/${host}/default.nix
         ] ++ extraModules;
@@ -47,23 +42,17 @@
   in {
     nixosConfigurations = {
 
-      # WSL — profil perso
-      dev-vm = mkHost {
-        host = "dev-vm";
+      # WSL profil — optional local-config.nix for work overrides
+      wsl = mkHost {
+        host = "wsl";
         extraModules = [ nixos-wsl.nixosModules.default ];
       };
 
-      # Desktop — profil perso
+      # Desktop profil
       desktop = mkHost { host = "desktop"; };
 
-      # Laptop — profil perso
+      # Laptop profil
       laptop = mkHost { host = "laptop"; };
-
-      # Desktop — profil enterprise (même machine, flake output différent)
-      desktop-work = mkHost {
-        host    = "desktop";
-        profile = "work";
-      };
 
     };
   };

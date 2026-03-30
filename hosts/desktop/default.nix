@@ -1,18 +1,15 @@
-# Desktop host
+# Desktop host — all-in-one personal configuration
 # Run `nixos-generate-config` to regenerate hardware-configuration.nix
-{ config, pkgs, profile, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/core/common.nix
-
-    ../../modules/core/users.nix
-    ../../modules/desktop/gnome.nix
-    ../../modules/gaming/games.nix
-    
-    ../../modules/services/tailscale.nix
-    ../../modules/apps/productivity.nix
+    ../../modules/system/base.nix
+    ../../modules/system/users.nix
+    ../../modules/system/applications/gui
+    ../../modules/system/applications/gui/games.nix
+    ../../modules/system/services/tailscale.nix
   ];
 
   networking = {
@@ -42,14 +39,11 @@
 
   environment.systemPackages = with pkgs; [
     lm_sensors
-    corectrl
-    discord
-    obs-studio
-    vlc
-    gimp
+    pciutils
+    usbutils
   ];
 
-  home-manager.users.tfreret = import ../../users/tfreret/${profile}.nix;
+  home-manager.users.tfreret = import ../../users/tfreret/personal.nix;
 
   system.stateVersion = "25.11";
 }

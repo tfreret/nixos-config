@@ -16,8 +16,6 @@
       gd  = "git diff";
       gp  = "git push";
       gl  = "git pull";
-
-      
     };
 
     initExtra = ''
@@ -28,8 +26,8 @@
 
   # direnv: auto-load .envrc / nix shells
   programs.direnv = {
-    enable            = true;
+    enable                = true;
     enableBashIntegration = true;
-    nix-direnv.enable = true;
+    nix-direnv.enable     = true;
   };
 }

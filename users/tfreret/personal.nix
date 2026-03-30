@@ -1,10 +1,10 @@
-# Default Home Manager profile — reads all values from local.nix (gitignored)
-{ pkgs, lib, local, ... }:
+# Baseline Home Manager profile — all machines start here
+# Work-specific overrides go in hosts/wsl/local-config.nix
+{ pkgs, lib, ... }:
 
 {
   imports = [
-    ../../modules/dev/git.nix
-    ../../modules/core/shell.nix
+    ../../modules/home/default.nix
   ];
 
   home.stateVersion = "25.11";
