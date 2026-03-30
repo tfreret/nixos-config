@@ -1,42 +1,35 @@
-# WSL Local Configuration (gitignored)
+# WSL Local Configuration Example
 # Copy this to ./local-config.nix for work/enterprise overrides.
 { config, pkgs, lib, ... }:
 
 {
-  # 1. Work Git Identity
-  # Overrides the personal identity set in modules/dev/git.nix
   home-manager.users.tfreret = { ... }: {
-    programs.git = {
-      userName  = "Your Name";
-      userEmail = "your.name@company.com";
+    programs.git.settings = {
+      user.name  = "Your Name";
+      user.email = "your.name@company.com";
     };
   };
 
-  # 2. Corporate hosts file entries
   networking.hosts = {
     # "192.168.100.10" = [ "internal.company.com" "api.company.com" ];
     # "10.0.0.5"       = [ "vpn-gateway.company.local" ];
   };
 
-  # 3. Environment Variables (Corporate Proxies, etc.)
   environment.variables = {
     # HTTP_PROXY  = "http://proxy.company.com:8080";
     # HTTPS_PROXY = "http://proxy.company.com:8080";
   };
 
-  # 4. Work-Specific Packages
   environment.systemPackages = with pkgs; [
     # azure-cli
     # kubectl
     # awscli2
   ];
 
-  # 5. Work Shell Aliases
   programs.bash.shellAliases = {
     # work-login = "az login && vpn-connect";
   };
 
-  # 6. Work SSH host blocks
   # home-manager.users.tfreret = { ... }: {
   #   programs.ssh.matchBlocks."gitlab.company.com" = {
   #     hostname     = "gitlab.company.com";

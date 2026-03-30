@@ -6,10 +6,10 @@
   programs.git = {
     enable = true;
 
-    userName  = "tfreret";
-    userEmail = "freret.tom@gmail.com";
+    settings = {
+      user.name  = "tfreret";
+      user.email = "freret.tom@gmail.com";
 
-    extraConfig = {
       init.defaultBranch   = "main";
       pull.rebase          = true;
       push.autoSetupRemote = true;

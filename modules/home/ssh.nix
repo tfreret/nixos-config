@@ -4,7 +4,10 @@
 
 {
   programs.ssh = {
-    enable         = true;
-    addKeysToAgent = "yes";
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
   };
 }

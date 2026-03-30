@@ -4,8 +4,10 @@
 {
   programs.go = {
     enable = true;
-    goPath = "go";
-    goBin  = "go/bin";
+    env = {
+      GOPATH = "go";
+      GOBIN  = "go/bin";
+    };
   };
 
   home.packages = with pkgs; [

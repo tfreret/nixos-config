@@ -8,6 +8,6 @@
     ./ssh.nix
     ./go.nix
     ./python.nix
-    ./node.nix
+    ./js.nix
   ];
 }
