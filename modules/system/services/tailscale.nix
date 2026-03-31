@@ -1,9 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  # Active le démon en arrière-plan
   services.tailscale.enable = true;
 
-  # Ajoute l'interface en ligne de commande locale
-  environment.systemPackages = [ pkgs.tailscale ];
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+    checkReversePath = "loose";
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
 }
