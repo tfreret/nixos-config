@@ -6,15 +6,16 @@
     enable = true;
     env = {
       GOPATH = "${config.home.homeDirectory}/go";
-      GOBIN  = "${config.home.homeDirectory}/go/bin";
+      GOBIN = "${config.home.homeDirectory}/go/bin";
+      GOPROXY = "https://proxy.golang.org,direct";
+      GOTOOLCHAIN = "auto";
     };
   };
 
   home.packages = with pkgs; [
-    gopls       # language server
-    go-tools    # staticcheck, goimports, etc.
-    delve       # debugger
-    golangci-lint
+    gopls
+    go-tools
+    delve
+    gcc
   ];
 }
-  
