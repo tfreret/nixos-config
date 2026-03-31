@@ -1,9 +1,8 @@
-# Shared GUI stack for graphical hosts
+# Shared GUI applications for graphical hosts
 { ... }:
 
 {
   imports = [
-    ./gnome.nix
     ./browsers.nix
     ./tools.nix
     ./media.nix

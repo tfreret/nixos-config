@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/system/base.nix
     ../../modules/system/users.nix
+    ../../modules/system/window-management/gnome.nix
     ../../modules/system/applications/gui
     ../../modules/system/services/tailscale.nix
   ];

@@ -8,6 +8,7 @@
     ./ssh.nix
     ./go.nix
     ./python.nix
-    ./js.nix
+    ./opencode.nix
+    ./neovim.nix
   ];
 }

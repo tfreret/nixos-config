@@ -5,8 +5,8 @@
   environment.systemPackages = with pkgs; [
     tmux
     vim
-    neovim
     lazygit
     lazydocker
+    opencode
   ];
 }

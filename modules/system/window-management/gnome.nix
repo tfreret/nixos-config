@@ -1,5 +1,5 @@
 # GNOME desktop environment
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.xserver.enable = true;

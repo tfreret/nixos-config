@@ -8,6 +8,7 @@
     ../../modules/system/base.nix
     ../../modules/system/users.nix
     ../../modules/system/wsl.nix
+    ../../modules/system/services/docker.nix
 
     # Graceful import: load ./local-config.nix if it exists
     (if builtins.pathExists ./local-config.nix then ./local-config.nix else {})

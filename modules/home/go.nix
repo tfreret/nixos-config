@@ -1,12 +1,12 @@
 # Go development environment
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.go = {
     enable = true;
     env = {
-      GOPATH = "go";
-      GOBIN  = "go/bin";
+      GOPATH = "${config.home.homeDirectory}/go";
+      GOBIN  = "${config.home.homeDirectory}/go/bin";
     };
   };
 
@@ -17,3 +17,4 @@
     golangci-lint
   ];
 }
+  
