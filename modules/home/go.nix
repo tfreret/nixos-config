@@ -5,8 +5,8 @@
   programs.go = {
     enable = true;
     env = {
-      GOPATH = "${config.home.homeDirectory}/go";
-      GOBIN = "${config.home.homeDirectory}/go/bin";
+      GOPATH = "${config.home.homeDirectory}/.development/go";
+      GOBIN = "${config.home.homeDirectory}/.development/go/bin";
       GOPROXY = "https://proxy.golang.org,direct";
       GOTOOLCHAIN = "auto";
     };
@@ -16,6 +16,9 @@
     gopls
     go-tools
     delve
+    gotest
+    goplay
+    impl
     gcc
   ];
 }
