@@ -17,7 +17,6 @@
     go-tools
     delve
     gotest
-    goplay
     impl
     gcc
   ];
