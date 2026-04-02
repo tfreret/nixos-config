@@ -7,5 +7,7 @@
     obs-studio
     vlc
     gimp
+    blender
+    freecad
   ];
 }

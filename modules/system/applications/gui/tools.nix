@@ -6,5 +6,6 @@
     vscode
     obsidian
     nextcloud-client
+    geary
   ];
 }
