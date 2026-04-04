@@ -10,6 +10,7 @@
     ../../modules/system/window-management/gnome.nix
     ../../modules/system/applications/gui
     ../../modules/system/applications/gui/games.nix
+    ../../modules/system/applications/gui/others.nix
     ../../modules/system/services/tailscale.nix
   ];
 
