@@ -3,10 +3,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    vscode
-    obsidian
-    nextcloud-client
-    thunderbird
-    ghostty
+    lmstudio
   ];
 }

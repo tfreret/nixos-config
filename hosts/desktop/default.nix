@@ -5,14 +5,25 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system/base.nix
-    ../../modules/system/users.nix
-    ../../modules/system/window-management/gnome.nix
-    ../../modules/system/applications/gui
-    ../../modules/system/applications/gui/games.nix
-    ../../modules/system/applications/gui/others.nix
+    ../../modules/system/core/base.nix
+    ../../modules/system/core/users.nix
+    
+    # === APPLICATIONS ===
+    ../../modules/system/applications/cli.nix
+    ../../modules/system/applications/tui.nix  
+    ../../modules/system/applications/gui.nix
+    ../../modules/system/applications/gaming.nix
+    
+    # === SERVICES ===
     ../../modules/system/services/tailscale.nix
+    
+    # === DESKTOP & THEMES ===
+    ../../modules/system/desktop/gnome.nix
+    ../../modules/system/desktop/themes.nix
   ];
+
+  # Enable gaming optimizations and applications
+  myApps.gaming.enable = true;
 
   networking = {
     hostName = "desktop";
@@ -33,6 +44,9 @@
     alsa.support32Bit = true;
     pulse.enable      = true;
   };
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   # Desktop-specific optimisations
   powerManagement.cpuFreqGovernor = "performance";

@@ -5,9 +5,16 @@
 
 {
   imports = [
-    ../../modules/system/base.nix
-    ../../modules/system/users.nix
+    ../../modules/system/core/base.nix
+    ../../modules/system/core/users.nix
     ../../modules/system/wsl.nix
+    
+    # === APPLICATIONS ===
+    ../../modules/system/applications/cli.nix
+    ../../modules/system/applications/tui.nix
+    # Note: GUI applications not included in WSL (headless environment)
+    
+    # === SERVICES ===
     ../../modules/system/services/docker.nix
 
     # Graceful import: load ./local-config.nix if it exists

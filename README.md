@@ -4,6 +4,11 @@ Multi-host NixOS configuration for personal, work, and WSL environments using Fl
 
 ## Quick Start
 
+A nix-shell will temporarily modify your $PATH environment variable. This can be used to try a piece of software before deciding to permanently install it.
+
+nix-shell -p lmstudio
+
+
 **Rebuild current host:**
 ```bash
 sudo nixos-rebuild switch --flake .

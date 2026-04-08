@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ./applications
+    ../applications
   ];
 
   nix.settings = {

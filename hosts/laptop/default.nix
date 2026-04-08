@@ -5,11 +5,21 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system/base.nix
-    ../../modules/system/users.nix
-    ../../modules/system/window-management/gnome.nix
-    ../../modules/system/applications/gui
+    ../../modules/system/core/base.nix
+    ../../modules/system/core/users.nix
+    
+    # === APPLICATIONS ===
+    ../../modules/system/applications/cli.nix
+    ../../modules/system/applications/tui.nix
+    ../../modules/system/applications/gui.nix
+    # Note: Gaming disabled on laptop for battery optimization
+    
+    # === SERVICES ===
     ../../modules/system/services/tailscale.nix
+    
+    # === DESKTOP & THEMES ===
+    ../../modules/system/desktop/gnome.nix
+    ../../modules/system/desktop/themes.nix
   ];
 
   networking = {
@@ -21,6 +31,9 @@
     systemd-boot.enable      = true;
     efi.canTouchEfiVariables = true;
   };
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   security.rtkit.enable = true;
   services.pipewire = {
