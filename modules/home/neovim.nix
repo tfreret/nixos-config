@@ -7,6 +7,8 @@
     defaultEditor = true;
     vimAlias = true;
     viAlias = true;
+    withPython3 = false;
+    withRuby = false;
   };
 
   # Deploy LazyVim starter config to nvim

@@ -1,23 +1,12 @@
-# WSL host
-# Baseline: personal configuration
-# Optional: ./local-config.nix (gitignored) for work-specific overrides
 { config, pkgs, ... }:
 
 {
   imports = [
-    ../../modules/system/core/base.nix
-    ../../modules/system/core/users.nix
-    ../../modules/system/wsl.nix
-    
-    # === APPLICATIONS ===
-    ../../modules/system/applications/cli.nix
-    ../../modules/system/applications/tui.nix
-    # Note: GUI applications not included in WSL (headless environment)
-    
-    # === SERVICES ===
-    ../../modules/system/services/docker.nix
-
-    # Graceful import: load ./local-config.nix if it exists
+    ../../modules/nixos/base.nix
+    ../../modules/nixos/profile-devvm.nix
+    ../../modules/nixos/applications/cli.nix
+    ../../modules/nixos/applications/tui.nix
+    ../../modules/nixos/services/docker.nix
     (if builtins.pathExists ./local-config.nix then ./local-config.nix else {})
   ];
 

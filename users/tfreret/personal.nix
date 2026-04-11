@@ -1,5 +1,4 @@
-# Baseline Home Manager profile — all machines start here
-# Work-specific overrides go in hosts/wsl/local-config.nix
+# Baseline Home Manager profile
 { pkgs, lib, ... }:
 
 {

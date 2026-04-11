@@ -9,7 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,19 +40,14 @@
 
   in {
     nixosConfigurations = {
-
-      # WSL profil — optional local-config.nix for work overrides
       wsl = mkHost {
         host = "wsl";
         extraModules = [ nixos-wsl.nixosModules.default ];
       };
 
-      # Desktop profil
       desktop = mkHost { host = "desktop"; };
 
-      # Laptop profil
       laptop = mkHost { host = "laptop"; };
-
     };
   };
 }

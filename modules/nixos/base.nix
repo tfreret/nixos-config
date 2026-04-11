@@ -1,11 +1,6 @@
-# NixOS base — applied to every host
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../applications
-  ];
-
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store   = true;
@@ -23,4 +18,13 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   security.sudo.wheelNeedsPassword = false;
+
+  programs.zsh.enable = true;
+
+  users.users.tfreret = {
+    isNormalUser = true;
+    description  = "tfreret";
+    extraGroups  = [ "wheel" "networkmanager" ];
+    shell        = pkgs.zsh;
+  };
 }

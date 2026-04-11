@@ -1,6 +1,4 @@
-local.nix
-local.nix.example
-hosts/*/local-config.nix
+local-config.nix
 
 result
 result-*

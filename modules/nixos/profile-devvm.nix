@@ -1,4 +1,3 @@
-# WSL-specific system options
 { config, pkgs, ... }:
 
 {
@@ -12,6 +11,5 @@
     wslu
   ];
 
-  # nix-ld allows running unpatched dynamic binaries (useful for vs-code server)
   programs.nix-ld.enable = true;
 }
