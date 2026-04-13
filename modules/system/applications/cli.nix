@@ -5,8 +5,10 @@
     git
     curl
     wget
+    fzf
     unzip
     gzip
-    fzf
+    lsof
+    openssl
   ];
 }
