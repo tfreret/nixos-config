@@ -11,5 +11,5 @@
     wslu
   ];
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true; # useful for vscode server
 }

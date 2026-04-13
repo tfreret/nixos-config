@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../../modules/nixos/base.nix
-    ../../modules/nixos/profile-devvm.nix
-    ../../modules/nixos/applications/cli.nix
-    ../../modules/nixos/applications/tui.nix
-    ../../modules/nixos/services/docker.nix
+    ../../modules/system/base.nix
+    ../../modules/system/profile-devvm.nix
+    ../../modules/system/applications/cli.nix
+    ../../modules/system/applications/tui.nix
+    ../../modules/system/services/docker.nix
     (if builtins.pathExists ./local-config.nix then ./local-config.nix else {})
   ];
 
