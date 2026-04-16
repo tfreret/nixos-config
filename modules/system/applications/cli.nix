@@ -10,5 +10,6 @@
     gzip
     lsof
     openssl
+    jq
   ];
 }
