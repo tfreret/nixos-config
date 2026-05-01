@@ -40,14 +40,6 @@
   
   # Ensure we have necessary tools for VSCode Server
   home.packages = with pkgs; [
-    # Basic tools
-    ripgrep
-    fd
-    
-    # Language servers that will be used by VS Code Server
-    # Note: nodePackages has been removed from nixpkgs
-    # typescript-language-server
-    # pyright
     gopls
   ];
 }

@@ -29,23 +29,30 @@
   # Basic system packages
   environment.systemPackages = with pkgs; [
     git
-    curl
-    wget
+    tmux
     vim
     fzf
+    openssl
+
     unzip
     zip
     gzip
     rsync
     gnutar
-    lsof
-    procps
-    openssl
+    
     jq
     yq
-    tmux
+    
+    lsof
+    procps
     htop
     btop
+
+    curl
+    wget
+    dig
+    # telnet
+    mtr
   ];
   
   # Security settings

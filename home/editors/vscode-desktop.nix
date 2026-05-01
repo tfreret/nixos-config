@@ -3,10 +3,7 @@
 
 {
   programs.vscode = {
-    # Use the regular VSCode package for desktop
     package = pkgs.vscode;
-    
-    # Desktop-specific extensions
     extensions = with pkgs.vscode-extensions; [
       # LaTeX
       james-yu.latex-workshop
@@ -44,10 +41,4 @@
       "breadcrumbs.enabled" = true;
     };
   };
-  
-  # Add desktop-specific packages that complement VSCode
-  home.packages = with pkgs; [
-    # Integration with other tools
-    zeal  # Offline documentation
-  ];
 }
