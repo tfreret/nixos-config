@@ -1,11 +1,12 @@
-# NixOS Configuration
+# NixOS, nix-darwin, and Home Manager Configuration
 
-My personal NixOS and Home Manager configuration using flakes and a modular structure.
-This configuration has been reorganized to follow a structure similar to [fufexan/dotfiles](https://github.com/fufexan/dotfiles) for better maintainability.
+Personal setup to manage dotfiles and OS configuration across all devices.
 
-I have 2 main use cases:
-- Desktop system for everyday use
-- WSL development environment for work
+Targets:
+- NixOS desktop workstation (GUI, gaming, LLM inference) -> workstation
+- macOS laptop (nix-darwin + Home Manager) -> macbook
+- NixOS development VM (terminal only) -> dev-vm
+- NixOS WSL development VM (terminal only) -> dev-wsl
 
 > Inspired by fufexan/dotfiles, mitchellh/nixos-config, and NathanFouere/nix-cfg
 
@@ -14,28 +15,22 @@ I have 2 main use cases:
 ```
 nixos-config/
 ├── flake.nix           # Main flake entry point
-├── home/               # Home Manager configurations
-│   ├── editors/        # Editor configurations (neovim, vscode)
-│   ├── profiles/       # User profiles for different hosts
-│   ├── programs/       # Program configurations (git, ssh)
-│   ├── services/       # Service configurations
-│   └── terminal/       # Terminal configurations (shell, tmux)
+├── AGENT.md            # Architecture standard
 ├── hosts/              # Host-specific configurations
-│   ├── desktop/        # Desktop host
-│   │   ├── default.nix
-│   │   └── hardware-configuration.nix
-│   └── wsl/            # WSL host
-│       ├── default.nix
-│       └── local-config.nix
-├── lib/                # Helper functions
-├── pkgs/               # Custom packages
-└── system/             # System configurations common between hosts
-    ├── core/           # Core system configs
-    ├── hardware/       # Hardware configs
-    ├── network/        # Network configs
-    ├── nix/            # Nix settings
-    ├── programs/       # System-level programs
-    └── services/       # System-level services
+│   ├── workstation/    # NixOS desktop (GUI)
+│   ├── dev-vm/         # NixOS VM (CLI)
+│   ├── dev-wsl/        # NixOS WSL
+│   └── macbook/        # nix-darwin
+├── home/               # Home Manager configurations
+│   ├── modules/        # Program + dotfiles modules
+│   └── profiles/       # base, desktop, terminal
+├── system/             # NixOS system configurations
+│   ├── modules/        # Core system modules
+│   └── profiles/       # base, desktop, terminal, wsl
+├── darwin/             # nix-darwin configurations
+│   ├── modules/        # macOS system modules
+│   └── profiles/       # base (placeholder)
+└── secrets/            # Secrets and local/private config material
 ```
 
 ## Usage
@@ -44,23 +39,28 @@ nixos-config/
 
 ```bash
 # Ensure there are no errors
-nix flake update
+nix flake check --no-build
 
-# Build desktop configuration
-sudo nixos-rebuild switch --flake .#desktop
+# Build workstation configuration
+sudo nixos-rebuild switch --flake .#workstation
+
+# Build dev VM configuration
+sudo nixos-rebuild switch --flake .#dev-vm
 
 # Build WSL configuration
-sudo nixos-rebuild switch --flake path:.#wsl  # Use path: for gitignored local-config.nix
+sudo nixos-rebuild switch --flake path:.#dev-wsl  # Use path: for gitignored local-config.nix
 
 # Update flake inputs
 nix flake update
 
-# Build desktop home configuration
-home-manager switch --flake .#tfreret-desktop
+# Build macOS configuration
+darwin-rebuild switch --flake .#macbook
 
-# Build WSL home configuration
-home-manager switch --flake .#tfreret-wsl
+# Build Home Manager configuration (macOS fallback)
+home-manager switch --flake .#macbook
 
 # Development shell
 nix develop
+
+nix flake show
 ```

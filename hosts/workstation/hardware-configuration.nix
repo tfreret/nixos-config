@@ -1,0 +1,6 @@
+# Hardware configuration.
+{ ... }:
+
+{
+  # TODO
+}
