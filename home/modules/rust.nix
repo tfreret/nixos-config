@@ -1,0 +1,11 @@
+# Rust development environment
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    rustc
+    cargo
+    rustfmt
+    clippy
+  ];
+}

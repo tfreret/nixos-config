@@ -7,11 +7,18 @@
     ../modules/vscode-desktop.nix
     ../modules/go.nix
     ../modules/python.nix
+    ../modules/c-cpp.nix
+    ../modules/rust.nix
+    ../modules/embedded.nix
+    ../modules/sql.nix
     ../modules/latex.nix
   ];
 
   home.packages = with pkgs; [
     gcc
+    podman
+    podman-compose
+    podman-tui
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     gnome-calendar
     blueman

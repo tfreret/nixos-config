@@ -2,5 +2,7 @@
 { ... }:
 
 {
-    # TODO
+  imports = [
+    ../modules/core.nix
+  ];
 }

@@ -25,11 +25,17 @@
     lsof
     htop
     btop
+    tree
 
     # Network utils
     curl
     wget
     dig
     mtr
+    nmap
+
+    # Media utils
+    ffmpeg
+
   ];
 }

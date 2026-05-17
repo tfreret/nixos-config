@@ -71,21 +71,21 @@
       };
     };
 
-    # darwinConfigurations = {
-    #   macbook = inputs.darwin.lib.darwinSystem {
-    #     system = "aarch64-darwin";
-    #     specialArgs = { inherit inputs self; };
-    #     modules = [
-    #       ./hosts/macbook
-    #       inputs.home-manager.darwinModules.home-manager
-    #       {
-    #         home-manager.useGlobalPkgs = true;
-    #         home-manager.useUserPackages = true;
-    #         home-manager.extraSpecialArgs = { inherit inputs self; };
-    #       }
-    #     ];
-    #   };
-    # };
+    darwinConfigurations = {
+      macbook = inputs.darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs self; };
+        modules = [
+          ./hosts/macbook
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs self; };
+          }
+        ];
+      };
+    };
     
     # Standalone Home Manager configurations
     homeConfigurations = {
