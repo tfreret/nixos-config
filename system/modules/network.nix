@@ -1,22 +1,13 @@
-# # Network configuration
-{ ... }:
+# Network configuration
+{ lib, ... }:
 
 {
-  # TODO
+  imports = [
+    ./services/tailscale.nix
+  ];
+
+  networking = {
+    networkmanager.enable = lib.mkDefault true;
+    useDHCP = lib.mkDefault false;
+  };
 }
-
-# { ... }:
-
-# {
-#   imports = [
-#     ./services/tailscale.nix
-#   ];
-  
-#   # Basic networking configuration
-#   networking = {
-#     networkmanager.enable = true;
-    
-#     # Enable DHCP on interfaces that are not managed by NetworkManager
-#     useDHCP = false;
-#   };
-# }

@@ -1,15 +1,11 @@
 {
-  description = "NixOS, nix-darwin, and Home Manager configuration";
+  description = "NixOS and Home Manager configuration";
 
   inputs = {
     # Core inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
@@ -27,33 +23,33 @@
   outputs = inputs@{ self, nixpkgs, ... }: {
     # NixOS configurations
     nixosConfigurations = {
-      # workstation = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   specialArgs = { inherit inputs self; };
-      #   modules = [
-      #     ./hosts/workstation
-      #     inputs.home-manager.nixosModules.home-manager
-      #     {
-      #       home-manager.useGlobalPkgs = true;
-      #       home-manager.useUserPackages = true;
-      #       home-manager.extraSpecialArgs = { inherit inputs self; };
-      #     }
-      #   ];
-      # };
+      workstation = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs self; };
+        modules = [
+          ./hosts/workstation
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs self; };
+          }
+        ];
+      };
 
-      # dev-vm = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   specialArgs = { inherit inputs self; };
-      #   modules = [
-      #     ./hosts/dev-vm
-      #     inputs.home-manager.nixosModules.home-manager
-      #     {
-      #       home-manager.useGlobalPkgs = true;
-      #       home-manager.useUserPackages = true;
-      #       home-manager.extraSpecialArgs = { inherit inputs self; isWSL = true; };
-      #     }
-      #   ];
-      # };
+      dev-vm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs self; };
+        modules = [
+          ./hosts/dev-vm
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs self; };
+          }
+        ];
+      };
 
       dev-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -71,22 +67,6 @@
       };
     };
 
-    darwinConfigurations = {
-      macbook = inputs.darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs self; };
-        modules = [
-          ./hosts/macbook
-          inputs.home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs self; };
-          }
-        ];
-      };
-    };
-    
     # Standalone Home Manager configurations
     homeConfigurations = {
       "macbook" = inputs.home-manager.lib.homeManagerConfiguration {

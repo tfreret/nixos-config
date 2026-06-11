@@ -1,5 +1,5 @@
-{...}
+# Home Manager gaming module
+{ ... }:
 
 {
-    #TODO
 }

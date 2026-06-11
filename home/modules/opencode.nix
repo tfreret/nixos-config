@@ -1,10 +1,5 @@
-# # Opencode configuration
-# { pkgs, ... }:
+# Opencode configuration
+{ ... }:
 
-# TODO: base config + symlink agent-skills repo
-
-# {
-#   home.packages = with pkgs; [
-#     opencode
-#   ];
-# }
+{
+}

@@ -22,7 +22,7 @@
         lg   = "log --oneline --graph --decorate --all";
         d    = "diff";
         p    = "push";
-        pl   = " pull";
+        pl   = "pull";
       };
     };
   };

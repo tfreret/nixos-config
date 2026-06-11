@@ -1,7 +1,4 @@
 { ... }:
-
-  # TODO
-
 {
   imports = [
     ../../system/profiles/terminal.nix

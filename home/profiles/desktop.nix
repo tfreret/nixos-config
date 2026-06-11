@@ -15,10 +15,6 @@
   ];
 
   home.packages = with pkgs; [
-    gcc
-    podman
-    podman-compose
-    podman-tui
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     gnome-calendar
     blueman

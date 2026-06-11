@@ -1,5 +1,5 @@
 # Tailscale configuration
-{ pkgs, ... }:
+{ ... }:
 
 {
   # Enable Tailscale

@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  users.users.tfreret.extraGroups = [ "podman" ];
 
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -18,10 +17,5 @@
     };
   };
 
-  # Useful other development tools
-  environment.systemPackages = with pkgs; [
-    dive
-    podman-compose
-    podman-tui
-  ];
+  # System-level Podman service only; CLI tools live in Home Manager.
 }

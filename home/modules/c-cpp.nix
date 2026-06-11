@@ -9,5 +9,6 @@
     cmake
     ninja
     pkg-config
+    gcc
   ];
 }

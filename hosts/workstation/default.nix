@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 
-kubectl get events -n nia --sort-by=.lastTimestamp | tail -n 20
-
 {
   imports = [
     ./hardware-configuration.nix

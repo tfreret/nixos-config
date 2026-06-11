@@ -1,10 +1,6 @@
 # Tmux configuration
 { pkgs, ... }:
 
-
-  # TODO
-
-  
 {
   programs.tmux = {
     enable = true;

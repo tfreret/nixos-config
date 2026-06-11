@@ -1,8 +1,6 @@
 # SSH configuration
 { ... }:
 
-  # TODO
-
 {
   programs.ssh = {
     enable = true;

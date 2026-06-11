@@ -23,7 +23,7 @@
       nixos-rebuild-wsl     = "sudo nixos-rebuild switch --flake path:~/.config/nixos-config#dev-wsl";
       nixos-rebuild-desktop = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#workstation";
       nixos-rebuild-vm      = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#dev-vm";
-      nixos-rebuild-macbook = "sudo darwin-rebuild switch --flake ~/.config/nixos-config#macbook";
+      nixos-rebuild-macbook = "home-manager switch --flake ~/.config/nixos-config#macbook";
     };
   };
 

@@ -2,7 +2,7 @@
 
 This repository targets:
 - NixOS + Home Manager (desktop + terminal + terminal/wsl profiles)
-- nix-darwin + Home Manager (macOS)
+- Home Manager only (macOS)
 - Home Manager only (other Linux distro)
 
 Primary goals:
@@ -16,9 +16,8 @@ Primary goals:
    - Git, zsh, tmux, editors, CLI tools, language toolchains.
    - Keep this cross-platform by default.
 
-2) NixOS and nix-darwin only own OS-level concerns.
+2) NixOS only owns OS-level concerns.
    - NixOS: kernel, hardware, services, users, boot, networking.
-   - Darwin: macOS defaults, launchd, system services, system settings.
 
 3) Profiles compose modules. Hosts only select profiles.
    - No program/service definitions inside hosts.
@@ -34,7 +33,6 @@ Primary goals:
 
 ```
 hosts/
-  macbook/        # nix-darwin + HM
   workstation/    # NixOS GUI
   dev-vm/         # NixOS CLI
   dev-wsl/        # NixOS CLI + some WSL params
@@ -46,10 +44,6 @@ home/
 system/
   profiles/       # base, desktop, terminal, wsl
   modules/        # core, services, network, hardware
-
-darwin/
-  profiles/       # base, desktop (if needed)
-  modules/        # macOS defaults, launchd, system settings
 
 lib/
 secrets/ later for ssh key + gpg ?
@@ -75,11 +69,9 @@ NixOS profiles:
 - system/profiles/wsl.nix
   WSL integration only.
 
-Darwin profiles:
-- darwin/profiles/base.nix
-  macOS defaults and system services.
-- darwin/profiles/desktop.nix
-  Optional desktop-specific preferences.
+macOS setup:
+- Home Manager only.
+- Homebrew is managed manually outside Nix.
 
 ## Hosts: thin composition only
 
@@ -103,7 +95,6 @@ Example composition goals:
   - home: base + terminal
 
 - macbook
-  - darwin: base (+ desktop if needed)
   - home: base + desktop
 
 ## Flake outputs (canonical)
@@ -111,8 +102,7 @@ Example composition goals:
 - nixosConfigurations.workstation
 - nixosConfigurations.dev-vm
 - nixosConfigurations.dev-wsl
-- darwinConfigurations.macbook
-- homeConfigurations.macbook (optional HM-only path)
+- homeConfigurations.macbook
 
 ## Migration policy
 
@@ -125,5 +115,4 @@ Example composition goals:
 ## Decision log
 
 - Dev tools live in Home Manager for cross-platform reuse.
-- Homebrew is not managed yet. Keep a placeholder only.
-- Use nix-darwin for macOS system settings.
+- Homebrew is managed manually outside Nix on macOS.
